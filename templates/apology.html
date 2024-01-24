@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <div style="position: relative; text-align: center; color: white;">
+        <img alt="Custom Image" src="{{ url_for('static', filename='MarcAur.jpeg') }}" style="width: 50%; height: auto;">
+        <div style="position: absolute; top: 10%; left: 50%; transform: translate(-50%, -50%);">{{ top }}</div>
+        <div style="position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%);">{{ bottom }}</div>
+    </div>
+{% endblock %}

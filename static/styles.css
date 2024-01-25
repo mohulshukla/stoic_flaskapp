@@ -23,3 +23,30 @@ nav .navbar-brand .green
 }
 
 
+
+.quote-background {
+    background-color: rgb(80, 100, 117); /* Dark background for the whole page */
+    height: 100vh; /* Full height */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.quote-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.quote-box {
+    max-width: 600px;
+}
+.quote-text {
+    font-size: 24px;
+    line-height: 1.6;
+}
+.quote-author {
+    font-size: 20px;
+    margin-top: 20px;
+}

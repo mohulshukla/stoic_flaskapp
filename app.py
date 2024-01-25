@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import sqlite3
 from flask_session import Session
 from cs50 import SQL
 import random
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import apology, login_required
+from helpers import apology, login_required, retrieve
+import requests
 
 # Configure application
 app = Flask(__name__)
@@ -136,7 +137,19 @@ def register():
 # generate quote route
 @app.route('/generate')
 def generate():
-    pass
+    try:
+        response = requests.get('https://stoic-quotes.com/api/quote')
+        response.raise_for_status()
+        data = response.json()
+        quote_text = data.get('text')  # Extract quote text
+        quote_author = data.get('author')  # Extract quote author
+        print(quote_text, quote_author)
+    except requests.RequestException as e:
+        print(e)
+        return apology("Could not Fetch Quote From API", 403)
+
+    # Pass the quote text and author separately to the template
+    return render_template('generate.html', quote_text=quote_text, quote_author=quote_author)
 
 
 # add quote route

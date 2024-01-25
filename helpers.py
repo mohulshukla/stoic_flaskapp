@@ -3,7 +3,7 @@ import requests
 import urllib.parse
 import sqlite3
 
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request, session, jsonify
 from functools import wraps
 
 
@@ -31,16 +31,18 @@ def login_required(f):
     return decorated_function
 
 
-# Database helper functions
-def get_db_connection():
-    conn = sqlite3.connect('quotes_app.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+# Generate Quote from API Helper Functions
 
-def get_random_quote():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1')
-    quote = cursor.fetchone()
-    conn.close()
-    return quote
+def retrieve():
+    try:
+        response = requests.get('https://stoic-quotes.com/api/quote')
+        response.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
+    except requests.RequestException:
+        return jsonify(error="Error fetching quote from API"), 500
+
+    quote_data = response.json()
+    print(quote_data)
+    return quote_data
+
+
+    

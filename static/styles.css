@@ -25,7 +25,7 @@ nav .navbar-brand .green
 
 
 .quote-background {
-    background-color: rgb(80, 100, 117); /* Dark background for the whole page */
+    background-color: rgb(167, 172, 177); /* Gray background for the whole page */
     height: 100vh; /* Full height */
     display: flex;
     align-items: center; /* Center vertically */

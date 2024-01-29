@@ -50,3 +50,23 @@ nav .navbar-brand .green
     font-size: 20px;
     margin-top: 20px;
 }
+
+.save-button {
+    background-color: #3a533c; /* Green background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(101, 134, 166, 0.2); /* Add shadow for some depth */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.save-button:hover {
+    background-color: #6e8a6b4e; 
+}

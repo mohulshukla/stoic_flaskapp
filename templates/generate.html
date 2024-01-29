@@ -7,10 +7,16 @@
 {% block main %}
 <div class="quote-background">
     <div class="quote-box">
-        <p class="quote-text">{{ quote_text }}</p>
-        <p class="quote-author">- {{ quote_author }}</p>
+        <div class="quote-content">
+            <p class="quote-text">{{ quote_text }}</p>
+            <p class="quote-author">- {{ quote_author }}</p>
+        </div>
+        <form method="post" action="{{ url_for('save_quote') }}">
+            <input type="hidden" name="quote_text" value="{{ quote_text }}">
+            <input type="hidden" name="quote_author" value="{{ quote_author }}">
+            <input type="hidden" name="user_id" value="{{ session['user_id'] }}">  <!-- Replace with actual user session or variable -->
+            <button type="submit" class="save-button">Save Quote</button>
+        </form>
     </div>
 </div>
 {% endblock %}
-
-

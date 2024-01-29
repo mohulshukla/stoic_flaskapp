@@ -136,6 +136,7 @@ def register():
 
 # generate quote route
 @app.route('/generate')
+@login_required
 def generate():
     try:
         response = requests.get('https://stoic-quotes.com/api/quote')
@@ -152,8 +153,33 @@ def generate():
     return render_template('generate.html', quote_text=quote_text, quote_author=quote_author)
 
 
+# saving quote route
+@app.route('/save', methods=['POST'])
+@login_required
+def save_quote():
+    quote_text = request.form.get('quote_text')
+    quote_author = request.form.get('quote_author')
+    user_id = request.form.get('user_id')  # Since user is already logged in
+    
+    # Save quote to the database
+    connection = sqlite3.connect('quotes_app.db')
+    cursor = connection.cursor()
+    
+    cursor.execute('''
+        INSERT INTO quotes (quote_text, author, user_id) VALUES (?, ?, ?)
+    ''', (quote_text, quote_author, user_id))
+    
+    connection.commit()
+    connection.close()
+    
+    # Redirect to a new page or the same page with a success message
+    return redirect(url_for('generate'))  # Redirect back to the generate route or to a 'success' route
+
+
+
 # add quote route
 @app.route('/add')
+@login_required
 def view_quote():
     ''' Add quote and its author manually '''
     pass
@@ -161,6 +187,7 @@ def view_quote():
 
 # share quote route
 @app.route('/share')
+@login_required
 def share():
     pass
 
@@ -168,6 +195,7 @@ def share():
 
 # mystery route
 @app.route('/mystery')
+@login_required
 def mystery():
     pass
 

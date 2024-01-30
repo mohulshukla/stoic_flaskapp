@@ -160,7 +160,7 @@ def generate():
 def save_quote():
     quote_text = request.form.get('quote_text')
     quote_author = request.form.get('quote_author')
-    user_id = request.form.get('user_id')  # Since user is already logged in
+    user_id = session.get('user_id')  # Since user is already logged in
     
     # Save quote to the database
     connection = sqlite3.connect('quotes_app.db')
@@ -176,6 +176,20 @@ def save_quote():
     # Redirect to a new page or the same page with a success message
     return redirect(url_for('generate'))  # Redirect back to the generate route or to a 'success' route
 
+
+
+# deleting route
+@app.route('/delete/<quote_text>')
+@login_required
+def delete_quote(quote_text):
+    user_id = session.get('user_id')
+    connection = sqlite3.connect('quotes_app.db')
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM quotes WHERE quote_text = ? AND user_id = ?", (quote_text, user_id))
+    connection.commit()
+    connection.close()
+
+    return redirect(url_for('index'))
 
 
 # add quote route

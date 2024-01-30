@@ -87,7 +87,7 @@ nav .navbar-brand
 
 .quotes-table th, .quotes-table td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -105,3 +105,8 @@ nav .navbar-brand
     background-color: #ddd;
 }
 
+
+.btn-1 {
+    background-color: transparent; /* Transparent background */
+    border: none; /* Remove border */
+}

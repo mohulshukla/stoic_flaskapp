@@ -47,11 +47,12 @@ def retrieve():
 def get_saved_quotes():
     connection = sqlite3.connect('quotes_app.db')
     cursor = connection.cursor()
+    
+    user_id = session['user_id']
 
-    cursor.execute("SELECT quote_text, author FROM quotes")
+    cursor.execute("SELECT quote_text, author FROM quotes WHERE user_id = ?", (user_id,))
     quotes = cursor.fetchall()
 
     connection.close()
     print(quotes)
     return quotes
-    

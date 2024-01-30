@@ -1,3 +1,4 @@
+<script src="/static/script.js"></script>
 {% extends "layout.html" %}
 
 {% block title %}
@@ -11,6 +12,7 @@
                 <tr>
                     <th>Quote</th>
                     <th>Author</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +20,13 @@
                 <tr>
                     <td>{{ quote[0] }}</td>
                     <td>{{ quote[1] }}</td>
+                    
+                    <td>
+                        <a href="{{ url_for('delete_quote', quote_text=quote[0]) }}" class="btn btn-1">
+                            <img src="/static/delete.png" alt="Delete">
+                        </a>
+                    </td>
+
                 </tr>
                 {% endfor %}
             </tbody>

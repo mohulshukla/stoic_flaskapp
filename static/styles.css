@@ -4,28 +4,12 @@ nav .navbar-brand
     font-size: xx-large;
 }
 
-/* Colors for brand */
-nav .navbar-brand .blue
-{
-    color: #537fbe;
-}
-nav .navbar-brand .red
-{
-    color: #ea433b;
-}
-nav .navbar-brand .yellow
-{
-    color: #f5b82e;
-}
-nav .navbar-brand .green
-{
-    color: #2e944b;
-}
+
 
 
 
 .quote-background {
-    background-color: rgb(167, 172, 177); /* Gray background for the whole page */
+    background-color: rgb(136, 138, 140); /* Gray background for the whole page */
     height: 100vh; /* Full height */
     display: flex;
     align-items: center; /* Center vertically */
@@ -45,28 +29,44 @@ nav .navbar-brand .green
 .quote-text {
     font-size: 24px;
     line-height: 1.6;
+
 }
 .quote-author {
     font-size: 20px;
     margin-top: 20px;
+    font-weight: bold;
 }
 
-.save-button {
-    background-color: #3a533c; /* Green background */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Add space between buttons */
+    margin-top: 20%; /* Space above the buttons */
+}
+
+.button {
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    padding: 10px 20px;
+    background-color: #434e44; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(101, 134, 166, 0.2); /* Add shadow for some depth */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    font-size: 1em;
+    box-shadow: 0 2px 2px rgba(101, 134, 166, 0.2);
+    transition: background-color 0.3s;
 }
 
-.save-button:hover {
-    background-color: #6e8a6b4e; 
+.button:hover {
+    background-color: #6e8a6b4e; /* Darker green on hover */
+}
+
+.button-new {
+    background-color: rgb(83, 85, 92); /* Dark gray background */
+}
+
+.button-new:hover {
+    background-color: rgb(150, 149, 149); /* Slightly lighter gray on hover */
 }

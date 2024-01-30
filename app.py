@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import sqlite3
 from flask_session import Session
 from cs50 import SQL
@@ -31,7 +31,7 @@ def after_request(response):
     return response
 
 
-# Routes <--
+
 
 
 # default (view saved quotes) route
@@ -172,7 +172,7 @@ def save_quote():
     
     connection.commit()
     connection.close()
-    
+    flash('Quote added successfully!')
     # Redirect to a new page or the same page with a success message
     return redirect(url_for('generate'))  # Redirect back to the generate route or to a 'success' route
 
@@ -188,16 +188,41 @@ def delete_quote(quote_text):
     cursor.execute("DELETE FROM quotes WHERE quote_text = ? AND user_id = ?", (quote_text, user_id))
     connection.commit()
     connection.close()
-
+    
+    flash('Quote deleted successfully')
     return redirect(url_for('index'))
 
 
 # add quote route
-@app.route('/add')
+@app.route('/add', methods=['GET','POST'])
 @login_required
-def view_quote():
+def add():
     ''' Add quote and its author manually '''
-    pass
+    if request.method == 'POST':
+        quote_text = request.form.get('quote')
+        author = request.form.get('author')
+
+        if not quote_text or not author:
+            # Handle the case where quote or author is empty
+            return redirect(url_for('add_quote'))
+
+        # Assuming 'user_id' is stored in the session upon login
+        user_id = session.get('user_id')
+
+        connection = sqlite3.connect('quotes_app.db')
+        cursor = connection.cursor()
+
+        cursor.execute("INSERT INTO quotes (quote_text, author, user_id) VALUES (?, ?, ?)", (quote_text, author, user_id))
+
+        connection.commit()
+        connection.close()
+        flash('Quote added successfully!')
+
+        return redirect(url_for('index'))
+
+    return render_template('add.html')
+
+
 
 
 # share quote route

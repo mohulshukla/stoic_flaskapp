@@ -110,3 +110,33 @@ nav .navbar-brand
     background-color: transparent; /* Transparent background */
     border: none; /* Remove border */
 }
+
+
+.add-quote-container {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto; /* Center the container */
+}
+
+.add-quote-container label {
+    font-weight: bold;
+    color: #333;
+}
+
+.add-quote-container .form-control {
+    background-color: #e9ecef; /* Slightly darker input fields */
+    border: none;
+}
+
+.add-quote-container .btn-primary {
+    background-color: #343a40; /* Darker button */
+    border: none;
+}
+
+#flash-message {
+    background-color: darkslategray; /* Dark blue background */
+    color: white; /* White text for better readability */
+}

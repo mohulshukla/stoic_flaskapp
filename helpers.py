@@ -44,5 +44,14 @@ def retrieve():
     print(quote_data)
     return quote_data
 
+def get_saved_quotes():
+    connection = sqlite3.connect('quotes_app.db')
+    cursor = connection.cursor()
 
+    cursor.execute("SELECT quote_text, author FROM quotes")
+    quotes = cursor.fetchall()
+
+    connection.close()
+    print(quotes)
+    return quotes
     

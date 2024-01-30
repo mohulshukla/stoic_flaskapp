@@ -1,5 +1,26 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Log In
+    Quotes
+{% endblock %}
+
+{% block main %}
+    <div class="quotes-table-container">
+        <table class="quotes-table">
+            <thead>
+                <tr>
+                    <th>Quote</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for quote in quotes %}
+                <tr>
+                    <td>{{ quote[0] }}</td>
+                    <td>{{ quote[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

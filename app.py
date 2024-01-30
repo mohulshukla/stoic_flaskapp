@@ -4,7 +4,7 @@ from flask_session import Session
 from cs50 import SQL
 import random
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import apology, login_required, retrieve
+from helpers import apology, login_required, get_saved_quotes
 import requests
 
 # Configure application
@@ -38,7 +38,8 @@ def after_request(response):
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    quotes = get_saved_quotes()
+    return render_template('index.html', quotes=quotes)
 
 
 

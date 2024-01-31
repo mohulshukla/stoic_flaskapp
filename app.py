@@ -223,14 +223,13 @@ def add():
     return render_template('add.html')
 
 
-
-
 # share quote route
 @app.route('/share')
 @login_required
 def share():
     quotes = get_saved_quotes()
     return render_template('share.html', quotes=quotes)
+
 
 # mystery route
 @app.route('/mystery')

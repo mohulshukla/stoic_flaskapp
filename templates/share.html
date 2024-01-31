@@ -17,7 +17,7 @@
                     <div class="quote-content">{{ quote[0] }}</div> <!-- quote text -->
                     <div class="quote-author">{{ quote[1] }}</div> <!-- author -->
                     <!-- Twitter share link -->
-                    <a href="https://twitter.com/intent/tweet?text={{ quote[0] | urlencode }}" target="_blank" class="share-twitter">Share on Twitter</a>
+                    <a href="https://twitter.com/intent/tweet?text={{ (quote[0] + '  - ' + quote[1]) | urlencode }}" target="_blank" class="share-twitter">Share on Twitter</a>
                 </div>
             </div>
         {% endfor %}

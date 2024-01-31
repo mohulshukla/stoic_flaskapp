@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Share Quotes
+{% endblock %}
+
+{% block main %}
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            {% for quote in quotes %}
+            <div class="swiper-slide">
+                <div class="flashcard">
+                    <div class="quote-content">{{ quote[0] }}</div> <!-- quote text -->
+                    <div class="quote-author">{{ quote[1] }}</div> <!-- author -->
+                    <!-- Twitter share link -->
+                    <a href="https://twitter.com/intent/tweet?text={{ quote[0] | urlencode }}" target="_blank" class="share-twitter">Share on Twitter</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <button id="prevButton" disabled>
+        <img src="/static/left-arrow.png" alt="Previous">
+    </button>
+    <button id="nextButton">
+        <img src="/static/right-arrow.png" alt="Next">
+    </button>
+    
+{% endblock %}

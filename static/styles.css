@@ -5,9 +5,6 @@ nav .navbar-brand
 }
 
 
-
-
-
 .quote-background {
     background-color: rgb(136, 138, 140); /* Gray background for the whole page */
     height: 100vh; /* Full height */
@@ -36,7 +33,6 @@ nav .navbar-brand
     margin-top: 20px;
     font-weight: bold;
 }
-
 
 
 .button-group {
@@ -139,4 +135,89 @@ nav .navbar-brand
 #flash-message {
     background-color: darkslategray; /* Dark blue background */
     color: white; /* White text for better readability */
+}
+
+/* Example styles for flashcards */
+.flashcard {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.quote-content {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Swiper specific styles */
+.swiper {
+    width: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.mySwiper {
+    width: auto;  /* Adjust width as needed */
+    height: 60%; /* Adjust height as needed */
+    margin: auto; /* Center the swiper container */
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.share-twitter {
+    display: block;
+    color: #1DA1F2;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+
+
+#prevButton, #nextButton {
+    position: absolute; /* Absolutely position the buttons */
+    top: 50%; /* Align vertically to the middle */
+    transform: translateY(-50%); /* Adjust for exact center alignment */
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10; /* Ensure buttons are above other elements */
+}
+
+#prevButton img, #nextButton img {
+    height: 30px; /* Adjust size of the arrows */
+    width: auto;
+}
+
+
+#prevButton:hover, #nextButton:hover {
+    background-color: #daeada; /* Darker green on hover */
+}
+
+#prevButton {
+    left: 10%; /* Position to the left of the swiper */
+}
+
+#nextButton {
+    right: 10%; /* Position to the right of the swiper */
+}
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0;
 }

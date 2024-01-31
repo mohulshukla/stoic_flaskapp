@@ -9,6 +9,16 @@
 {% endblock %}
 
 {% block main %}
+    <div class="sort-menu">
+        <label for="sort-select" class="sort-label">Sort by:</label>
+        <select id="sort-select" onchange="sortFlashcards()">
+            <option value="last_added" {% if current_sort_method == 'last_added' %}selected{% endif %}>Last Added</option>
+            <option value="first_added" {% if current_sort_method == 'first_added' %}selected{% endif %}>First Added</option>
+            <option value="author_asc" {% if current_sort_method == 'author_asc' %}selected{% endif %}>Author Name Ascending</option>
+            <option value="author_desc" {% if current_sort_method == 'author_desc' %}selected{% endif %}>Author Name Descending</option>
+        </select>
+    </div>
+
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             {% for quote in quotes %}
@@ -32,3 +42,5 @@
     </button>
     
 {% endblock %}
+
+

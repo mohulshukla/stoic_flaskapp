@@ -4,7 +4,7 @@ from flask_session import Session
 from cs50 import SQL
 import random
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import apology, login_required, get_saved_quotes
+from helpers import apology, login_required, get_saved_quotes, get_sorted_quotes
 import requests
 
 # Configure application
@@ -227,8 +227,9 @@ def add():
 @app.route('/share')
 @login_required
 def share():
-    quotes = get_saved_quotes()
-    return render_template('share.html', quotes=quotes)
+    sort_method = request.args.get('sort', 'last_added')
+    quotes = get_sorted_quotes(sort_method)
+    return render_template('share.html', quotes=quotes, current_sort_method=sort_method)
 
 
 # mystery route

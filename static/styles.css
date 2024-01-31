@@ -221,3 +221,41 @@ button[disabled] {
     cursor: not-allowed;
     opacity: 0;
 }
+
+.swiper-wrapper {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-slide {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+
+
+
+.sort-label {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #787878; /* Dark grey color */
+    font-family: 'Garamond', serif; /* Classical font choice */
+}
+
+#sort-select {
+    font-size: 16px;
+    color: #505050; /* Dark grey color for text */
+    background-color: #f8f8f8; /* Light grey background for dropdown */
+    border: 2px solid #a0a0a0; /* Solid border for dropdown */
+    border-radius: 5px; /* Rounded corners */
+    padding: 4px 6px; /* Padding for aesthetic spacing */
+    font-family: 'Times New Roman', serif; /* Different font */
+    appearance: none; /* Removes default browser styling */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    text-align-last: center; /* Center aligns the text */
+}
+
+#sort-select:focus {
+    outline: none; /* Removes the focus outline */
+    border-color: #787878; /* Changes border color on focus */
+}
+

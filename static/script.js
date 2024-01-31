@@ -92,3 +92,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial check for the button states
     checkButtonState();
 });
+
+
+function sortFlashcards() {
+    // Get the flashcards container
+    let flashcardsContainer = document.querySelector('.swiper-wrapper');
+
+    // Start fade out effect
+    flashcardsContainer.style.opacity = '0';
+
+    // Wait for the fade-out transition before sorting
+    setTimeout(() => {
+        let sortMethod = document.getElementById('sort-select').value;
+        window.location.href = `/share?sort=${sortMethod}`;
+    }, 500); // Duration of fade-out transition in milliseconds
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    let quotes = document.querySelectorAll('.swiper-slide');
+    quotes.forEach(quote => {
+        quote.style.opacity = 1;
+    });
+});

@@ -56,3 +56,24 @@ def get_saved_quotes():
     connection.close()
     print(quotes)
     return quotes
+
+
+def get_sorted_quotes(sort_method):
+    connection = sqlite3.connect('quotes_app.db')
+    cursor = connection.cursor()
+    user_id = session['user_id']
+
+    if sort_method == 'author_asc':
+        cursor.execute("SELECT quote_text, author FROM quotes WHERE user_id = ? ORDER BY author ASC", (user_id,))
+    elif sort_method == 'author_desc':
+        cursor.execute("SELECT quote_text, author FROM quotes WHERE user_id = ? ORDER BY author DESC", (user_id,))
+    elif sort_method == 'first_added':
+        cursor.execute("SELECT quote_text, author FROM quotes WHERE user_id = ? ORDER BY id ASC", (user_id,))  # Order by id ASC for oldest first
+    else:  # last_added or any other sort method
+        cursor.execute("SELECT quote_text, author FROM quotes WHERE user_id = ? ORDER BY id DESC", (user_id,))  # Order by id DESC for newest first
+
+
+    quotes = cursor.fetchall()
+    connection.close()
+    print(quotes)
+    return quotes

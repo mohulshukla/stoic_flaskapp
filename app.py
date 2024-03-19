@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 from flask_session import Session
 from cs50 import SQL
-import random
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required, get_saved_quotes, get_sorted_quotes
 import requests
@@ -96,7 +95,6 @@ def logout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-
     # Forget any user_id
     session.clear()
 
@@ -231,12 +229,6 @@ def share():
     quotes = get_sorted_quotes(sort_method)
     return render_template('share.html', quotes=quotes, current_sort_method=sort_method)
 
-
-# mystery route
-@app.route('/mystery')
-@login_required
-def mystery():
-    pass
 
 
 if __name__ == '__main__':

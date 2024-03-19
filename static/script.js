@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.btn-1').forEach(function(button) {
         button.addEventListener('click', function(event) {
@@ -15,10 +17,10 @@ window.onload = function() {
         if (flashMessage) {
             flashMessage.style.display = 'none';
         }
-    }, 3000); // 5000 milliseconds = 5 seconds
+    }, 3000); // 3000 milliseconds = 3 seconds
 };
 
-// script.js
+
 var swiper = new Swiper('.mySwiper', {
     spaceBetween: 30,
     pagination: {
@@ -47,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         swiper.slideNext();
     });
 });
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Swiper
     var swiper = new Swiper('.mySwiper', {
